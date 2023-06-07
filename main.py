@@ -26,7 +26,7 @@ class Entrevista():
             "Data/Hora": self._dataHora
         }
         return dadosEntrevista
-    
+
     def gravarCsv(self, dados):
         with open("bd.csv", "a", newline="") as bd:
             writer = csv.writer(bd)
@@ -44,13 +44,16 @@ while True:
 
     if menu == "1":
         while True:
-            idade = int(input("Idade: "))
+            idade = input("Idade: ")
+            if idade == "00":
+                exit()
+            idade = int(idade)
             genero = input("Gênero: ")
-            resposta1 = input("Pergunta 1: ")
-            resposta2 = input("Pergunta 2: ")
-            resposta3 = input("Pergunta 3: ")
-            resposta4 = input("Pergunta 4: ")
-            
+            resposta1 = input("Você acredita que a pandemia mudou a forma como as pessoas buscam propósito de vida? ")
+            resposta2 = input("Você sentiu a necessidade de reavaliar seu propósito profissional durante a pandemia? ")
+            resposta3 = input("Você sentiu  necessidade de buscar ensino EAD durante pandemia? ")
+            resposta4 = input("você considera ou considerou buscar o ensino EAD para um curso livre ou um curso técnico pós- pandemia? ")
+
             dados = Entrevista(idade, genero, resposta1, resposta2, resposta3, resposta4, dataHora)
             dados.gravarCsv(dados.get_mostrarDadosEntrevista())
             print("Dados da pesquisa inseridos com sucesso!")
