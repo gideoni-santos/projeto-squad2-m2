@@ -52,10 +52,9 @@ while True:
 
     if menu == "1":
         while True:
-            idade = input("Idade: ")
-            if idade == "00":
+            idade = int(input("Idade: "))
+            if idade == 00:
                 exit()
-            idade = int(idade)
             genero = input("Gênero: ")
             resposta1 = verificarResposta(input("Você acredita que a pandemia mudou a forma como as pessoas buscam propósito de vida? "))
             resposta2 = verificarResposta(input("Você sentiu a necessidade de reavaliar seu propósito profissional durante a pandemia? "))
