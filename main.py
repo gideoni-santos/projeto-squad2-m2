@@ -15,7 +15,7 @@ class Entrevista():
         self._resposta4 = resposta4
         self._dataHora = dataHora()
 
-    def get_mostrarDadosEntrevista(self): 
+    def get_mostrarDadosEntrevista(self):
         dadosEntrevista = {
             "Idade": self._idade,
             "Genero": self._genero,
@@ -32,7 +32,15 @@ class Entrevista():
             writer = csv.writer(bd)
             writer.writerow(dados.values())
 
-#INICIO ARQUIVO MAIN
+def verificarResposta(resposta):
+    while True:
+        resposta = resposta.lower()
+        if resposta == "sim" or resposta == "não" or resposta == "não sei responder":
+            return resposta
+        else:
+            resposta = input("Resposta inválida. Por favor, insira apenas 'sim', 'não' ou 'não sei responder': ")
+
+# INICIO ARQUIVO MAIN
 print("Bem-vindo ao programa de cadastro de pesquisa")
 
 while True:
@@ -49,10 +57,10 @@ while True:
                 exit()
             idade = int(idade)
             genero = input("Gênero: ")
-            resposta1 = input("Você acredita que a pandemia mudou a forma como as pessoas buscam propósito de vida? ")
-            resposta2 = input("Você sentiu a necessidade de reavaliar seu propósito profissional durante a pandemia? ")
-            resposta3 = input("Você sentiu  necessidade de buscar ensino EAD durante pandemia? ")
-            resposta4 = input("você considera ou considerou buscar o ensino EAD para um curso livre ou um curso técnico pós- pandemia? ")
+            resposta1 = verificarResposta(input("Você acredita que a pandemia mudou a forma como as pessoas buscam propósito de vida? "))
+            resposta2 = verificarResposta(input("Você sentiu a necessidade de reavaliar seu propósito profissional durante a pandemia? "))
+            resposta3 = verificarResposta(input("Você sentiu a necessidade de buscar ensino EAD durante pandemia? "))
+            resposta4 = verificarResposta(input("Você considera ou considerou buscar o ensino EAD para um curso livre ou um curso técnico pós-pandemia? "))
 
             dados = Entrevista(idade, genero, resposta1, resposta2, resposta3, resposta4, dataHora)
             dados.gravarCsv(dados.get_mostrarDadosEntrevista())
@@ -62,5 +70,5 @@ while True:
         exit()
 
     else:
-        print("Por favor insira uma opção válida")
+        print("Por favor, insira uma opção válida")
         continue
