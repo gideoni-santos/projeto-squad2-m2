@@ -1,5 +1,6 @@
 from datetime import datetime
 import csv
+import os
 
 def dataHora():
     dataHora = datetime.now()
@@ -31,6 +32,16 @@ def verificarResposta(resposta):
             return resposta
         else:
             resposta = input("Resposta inválida. Por favor, insira apenas 'sim', 'não' ou 'não sei responder': ")
+
+def verificacaoColunas(): 
+    #CASO SEJA A PRIMEIRA VEZ EXECUTANDO O PROGRAMA ELE GRAVA AS COLUNAS. CASO CONTRARIO, SEGUE COM O CODIGO.
+    coluna = ["Idade", "Genero", "Pergunta1", "Pergunta2", "Pergunta3", "Pergunta4", "Data/Hora"]
+    if os.path.exists("bd.csv") and os.path.getsize("bd.csv") > 0:
+        print("")
+    else:
+        with open("bd.csv", "a", newline="") as bd:
+            writer = csv.writer(bd)
+            writer.writerow(coluna)
 
 class Entrevista():
     def __init__(self, idade, genero, resposta1, resposta2, resposta3, resposta4, dataHora):
