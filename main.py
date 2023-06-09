@@ -5,6 +5,33 @@ def dataHora():
     dataHora = datetime.now()
     return dataHora.strftime("%d/%m/%Y %H:%M")
 
+def verificarIdade():
+    while True:
+        idade = input("Idade: ")
+        if idade == "00":
+            print("-"*100)
+            print("Você saiu do programa!")
+            print("-"*100)
+            exit()
+        try:
+            if int(idade) > 0 and int(idade) < 100:
+                pass
+            else:
+                print("Por favor insira uma idade válida.")
+                continue
+        except ValueError:
+            print("Por favor insira um número.")
+            continue
+        return idade
+    
+def verificarResposta(resposta):
+    while True:
+        resposta = resposta.lower()
+        if resposta == "sim" or resposta == "não" or resposta == "não sei responder":
+            return resposta
+        else:
+            resposta = input("Resposta inválida. Por favor, insira apenas 'sim', 'não' ou 'não sei responder': ")
+
 class Entrevista():
     def __init__(self, idade, genero, resposta1, resposta2, resposta3, resposta4, dataHora):
         self._idade = idade
@@ -32,14 +59,6 @@ class Entrevista():
             writer = csv.writer(bd)
             writer.writerow(dados.values())
 
-def verificarResposta(resposta):
-    while True:
-        resposta = resposta.lower()
-        if resposta == "sim" or resposta == "não" or resposta == "não sei responder":
-            return resposta
-        else:
-            resposta = input("Resposta inválida. Por favor, insira apenas 'sim', 'não' ou 'não sei responder': ")
-
 # INICIO ARQUIVO MAIN
 print("Bem-vindo ao programa de cadastro de pesquisa")
 
@@ -52,10 +71,8 @@ while True:
 
     if menu == "1":
         while True:
-            idade = int(input("Idade: "))
-            if idade == 00:
-                exit()
-            genero = input("Gênero: ")
+            idade = verificarIdade()
+            genero = input("Gênero: ").capitalize()
             resposta1 = verificarResposta(input("Você acredita que a pandemia mudou a forma como as pessoas buscam propósito de vida? "))
             resposta2 = verificarResposta(input("Você sentiu a necessidade de reavaliar seu propósito profissional durante a pandemia? "))
             resposta3 = verificarResposta(input("Você sentiu a necessidade de buscar ensino EAD durante pandemia? "))
@@ -63,11 +80,18 @@ while True:
 
             dados = Entrevista(idade, genero, resposta1, resposta2, resposta3, resposta4, dataHora)
             dados.gravarCsv(dados.get_mostrarDadosEntrevista())
+            print("-"*100)
             print("Dados da pesquisa inseridos com sucesso!")
+            print("-"*100)
 
     elif menu == "2":
+        print("-"*100)
+        print("Você saiu do programa!")
+        print("-"*100)
         exit()
 
     else:
+        print("-"*100)
         print("Por favor, insira uma opção válida")
+        print("-"*100)
         continue
