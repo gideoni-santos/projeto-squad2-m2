@@ -35,7 +35,7 @@ Nosso Squad tem a missão importante de apresentar uma pesquisa à uma empresa r
 ## 🛠️ Ferramentas utilizadas:
 
 [Canva](https://www.canva.com/)
-- #### Elaboração do slide de apresentação.
+- #### Elaboração do slide de apresentação. (Ilustração abaixo)
 
  <img src="https://github.com/gideoni-santos/projeto-squad2-m2/assets/123770891/60b7777e-5c56-417e-a07b-f3f080b7646f"/>
  
