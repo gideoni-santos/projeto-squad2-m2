@@ -80,11 +80,18 @@ while True:
 
             dados = Entrevista(idade, genero, resposta1, resposta2, resposta3, resposta4, dataHora)
             dados.gravarCsv(dados.get_mostrarDadosEntrevista())
+            print("-"*100)
             print("Dados da pesquisa inseridos com sucesso!")
+            print("-"*100)
 
     elif menu == "2":
+        print("-"*100)
+        print("Você saiu do programa!")
+        print("-"*100)
         exit()
 
     else:
+        print("-"*100)
         print("Por favor, insira uma opção válida")
+        print("-"*100)
         continue
