@@ -9,6 +9,8 @@ while True:
     )
 
     if menu == "1":
+        verificacaoColunas()
+
         while True:
             idade = verificarIdade()
             genero = input("Gênero: ").capitalize()
